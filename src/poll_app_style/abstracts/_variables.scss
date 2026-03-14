@@ -1,0 +1,31 @@
+@use '../base/fonts' ;
+
+$dark-bg: #35273a;
+$light-bg: #fefdff;
+
+$text-white:#fefdff;
+$text-orange: #ffb770;
+$text-orange_darker: #ee9236;
+$text-dark: #35273a;
+
+$button-primary: #ffcfa1;
+$button-primary_hover: #ffb770;
+$button-primary_inactive: #f7decd;
+$button-filter_inactive: #fee9d4;
+$button-filter_hover: #ffcfa1;
+$button-filter_active: #ffb770;
+$button-tertial : #5c5061;
+$button-brown: #72524a;
+
+$answer-hover: #feebd9;
+$input-hover: #fee9d4;
+$dropdown-hover: #f7decd;
+$dropdown_menu-hover: #493c4d;
+
+$highlight_card-bg: #faf5fe;
+$highlight_card-bg-hover: #f4e9fb;
+$survey_card-bg: #423547;
+$survey_card-bg-hover: #4f4353;
+
+$font-heading: 'Nerko', sans-serif;
+$font-body: 'Nunito', sans-serif;

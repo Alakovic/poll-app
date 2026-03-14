@@ -1,0 +1,54 @@
+@use '../abstracts/variables' as v;
+
+.btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 10px;
+  color: v.$text-dark;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--primary {
+    background-color: v.$button-primary;
+  }
+
+  &--primary:hover {
+    background-color: v.$button-primary_hover;
+  }
+
+  &--hidden {
+    display: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+$btn-icons: (
+  'new': 'add_circle_black',
+  'publish': 'check',
+);
+
+@each $key, $icon in $btn-icons {
+  .btn--#{$key} {
+    &::after {
+      content: '';
+      background-image: url('/assets/img/#{$icon}.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0;
+      transition: 0.2s;
+      display: inline-block;
+    }
+
+    &:hover::after {
+      width: 25px;
+      height: 25px;
+      opacity: 1;
+      margin-left: 10px;
+    }
+  }
+}

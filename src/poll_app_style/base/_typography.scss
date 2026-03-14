@@ -1,0 +1,15 @@
+@use '../abstracts/variables' as *;
+
+body {
+  font-family: $font-body;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+}
+
+.btn {
+  font-family: $font-body;
+  font-size: 22px;
+  font-weight: 600;
+}
