@@ -1,0 +1,9 @@
+<div class="survey">
+    <h2 class="survey__title">Your surveys</h2>
+    <p class="survey__subtitle">Ending soon surveys</p>
+    <div class="survey__endsoon-list">
+        @for(s of surveys(); track s.title) {
+             <app-survey-card [survey]="s"></app-survey-card>
+        }
+    </div>
+</div>

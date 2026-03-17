@@ -1,0 +1,27 @@
+@use '../abstracts/variables' as v;
+
+.survey{
+    padding: 0 50px;
+    display: flex;
+    flex-direction: column;
+
+    &__title{
+        font-size: 70px;
+        color: v.$text-orange;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__subtitle{
+        font-size: 24px;
+        color: v.$text-white;
+        padding-top: 100px;
+    }
+
+    &__endsoon-list{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+}
