@@ -3,7 +3,7 @@
 .survey-form {
   width: 100%;
   background: v.$dark-bg;
-  padding: 80px;
+  padding: 40px 80px;
   border-radius: 12px 100px 12px 12px;
 
   &__header {
@@ -116,5 +116,12 @@
       background-image: url('/assets/img/delete_hover.svg');
       cursor: pointer;
     }
+  }
+
+  &__question {
+    padding-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 }
