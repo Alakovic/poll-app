@@ -1,7 +1,13 @@
-<div class="question-form">
-  <div class="question-form__wrapper">
-    <label for="question">1.Question </label>
-    <div class="survey-form__delete"></div>
-  </div>
-  <input type="text" id="question" name="question" />
+<div class="survey-form__wrapper survey-form__wrapper--question">
+  <label class="survey-form__question-num" for="question">1.Question </label>
+  <div class="survey-form__delete survey-form__delete--question"></div>
+</div>
+<input type="text" id="question" name="question" class="survey-form__question" />
+<div class="survey-form__answers-settings">
+  <span class="survey-form__answers-title">Answers</span>
+  <label class="survey-form__answers-control">
+    <input type="checkbox"  class="survey-form__checkbox" id="allowMultipleAnswers" name="allowMultipleAnswers" /><!-- formControlName="allowMultipleAnswers" -->
+    <span class="survey-form__custom-checkbox"></span>
+    <p>Allow multiple answers</p>
+  </label>
 </div>

@@ -100,6 +100,11 @@
       resize: none;
       height: 100%;
     }
+
+    &--question {
+      justify-content: space-between;
+      padding-bottom: 5px;
+    }
   }
 
   &__delete {
@@ -116,12 +121,102 @@
       background-image: url('/assets/img/delete_hover.svg');
       cursor: pointer;
     }
+
+    &--question {
+      margin-top: 0;
+    }
   }
 
-  &__question {
+  &__questions {
     padding-top: 40px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+  }
+
+  &__question-num {
+    font-size: 18px;
+    font-weight: bold;
+    color: v.$text-white;
+    text-align: left;
+    flex: 1;
+    margin-top: 5px;
+  }
+
+  &__question {
+    width: 100%;
+    border: none;
+    border-radius: 8px 25px 8px 8px;
+    padding: 10px;
+    font-size: 18px;
+    &:focus {
+      outline: none;
+      border: none;
+      background-color: v.$input-focus;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__answers-settings {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  &__answers-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: v.$text-white;
+    padding-block: 15px;
+  }
+
+  &__answers-control {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    > p {
+      font-size: 14px;
+      color: v.$text-white;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__checkbox {
+    display: none;
+    &:checked + .survey-form__custom-checkbox {
+      background-color: v.$button-filter_active;
+      border-color: v.$button-filter_active;
+    }
+    &:checked + .survey-form__custom-checkbox::after {
+      content: '';
+      position: absolute;
+      left: 3px;
+      bottom: 1px;
+      width: 5px;
+      height: 12px;
+      border: solid black;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    &:hover + .survey-form__custom-checkbox {
+      background-color: v.$button-filter_hover;
+      cursor: pointer;
+    }
+  }
+
+  &__custom-checkbox {
+    width: 15px;
+    height: 15px;
+    border: 2px solid v.$text-white;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
   }
 }
