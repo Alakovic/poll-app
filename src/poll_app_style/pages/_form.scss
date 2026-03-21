@@ -3,7 +3,7 @@
 .survey-form {
   width: 100%;
   background: v.$dark-bg;
-  padding: 40px 80px;
+  padding: 30px 80px;
   border-radius: 12px 100px 12px 12px;
 
   &__header {
@@ -44,7 +44,7 @@
 
     &--hori {
       display: grid;
-      grid-template-columns: max-content max-content 1fr;
+      grid-template-columns: 220px 220px 1fr;
       grid-template-areas:
         'name name description'
         'date category description';
@@ -130,8 +130,8 @@
   &__questions {
     padding-top: 40px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px 80px;
   }
 
   &__question-num {
@@ -218,5 +218,22 @@
     border-radius: 3px;
     display: inline-block;
     position: relative;
+  }
+
+  &__answers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__answer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    >span {
+      font-size: 18px;
+      font-weight: bold;
+      color: v.$text-white;
+    }    
   }
 }

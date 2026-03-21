@@ -6,8 +6,32 @@
 <div class="survey-form__answers-settings">
   <span class="survey-form__answers-title">Answers</span>
   <label class="survey-form__answers-control">
-    <input type="checkbox"  class="survey-form__checkbox" id="allowMultipleAnswers" name="allowMultipleAnswers" /><!-- formControlName="allowMultipleAnswers" -->
+    <input
+      type="checkbox"
+      class="survey-form__checkbox"
+      id="allowMultipleAnswers"
+      name="allowMultipleAnswers"
+    /><!-- formControlName="allowMultipleAnswers" -->
     <span class="survey-form__custom-checkbox"></span>
     <p>Allow multiple answers</p>
   </label>
+</div>
+<div class="survey-form__answers">
+  <div class="survey-form__answer">
+    <span>A.</span>
+    <div class="survey-form__wrapper">
+      <input type="text" class="survey-form__answer-input" />
+      <div class="survey-form__delete survey-form__delete--answer"></div>
+    </div>
+  </div>
+  <div class="survey-form__answer">
+    <span class="survey-form__answer-label">B.</span>
+    <div class="survey-form__wrapper">
+      <input type="text" class="survey-form__answer-input" />
+      <div class="survey-form__delete survey-form__delete--answer"></div>
+    </div>
+  </div>
+
+  <button class="btn btn--add">Add answer<img src="./assets/img/add_circle.svg" ></button>
+
 </div>
