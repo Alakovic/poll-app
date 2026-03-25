@@ -1,5 +1,7 @@
 <div class="card card--board">
-    <div class="card__category card__category--board">{{ survey.category }}</div>
-    <div class="card__title card__title--board">{{ survey.title }}</div>
-    <div class="card__expiration card__expiration--board"> Ends in {{surveyService.getDaysLeft(survey.endDate)}} days</div>
+  <div class="card__category card__category--board">{{ survey.category }}</div>
+  <div class="card__title card__title--board">{{ survey.title }}</div>
+  <div class="card__expiration card__expiration--board">
+    {{ statusText() }}
+  </div>
 </div>

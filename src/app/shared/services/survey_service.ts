@@ -25,6 +25,7 @@ export class SurveyService {
   });
 
   selectedCategory = signal<SurveyCategory | null>(null);
+  selectedStatus = signal<'active' | 'past'>('active');
 
 
   categories: SurveyCategory[] = [
@@ -125,10 +126,16 @@ export class SurveyService {
     });
   });
 
-  filteredSurveys = computed(() => {
+  filteredByStatusSurveys = computed(() => {
+    let status = this.selectedStatus();
     let cat = this.selectedCategory();
-    if (!cat) return this.surveyList();
-    return this.surveyList().filter((s) => s.category === cat);
+    return this.surveyList().filter((s) => {
+      let isActive = s.endDate ? this.getDaysLeft(s.endDate) >= 0 : true;
+      if (status === 'active' && !isActive) return false;
+      if (status === 'past' && isActive) return false;
+      if (cat && s.category !== cat) return false;
+      return true;
+    });
   });
 
   getDaysLeft(endDate: Date | string | undefined): number {

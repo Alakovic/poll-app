@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject,computed } from '@angular/core';
 import { SurveyService } from '../../services/survey_service';
 import { SurveyCardBoard } from '../survey-card-board/survey-card-board';
 import { SurveyCategory } from '../../types/category_types';
@@ -16,9 +16,15 @@ export class SurveyOverview {
 
   open: boolean = false;
   selectedCategory: SurveyCategory | null = null;
+  activeStatus: 'active' | 'past' = 'active';
 
   selectCategory(cat: SurveyCategory | null) {
     this.surveyService.selectedCategory.set(cat);
     this.open = false;
   }
+
+  setStatus(status: 'active' | 'past') {
+    this.activeStatus = status;
+  }
+
 }
