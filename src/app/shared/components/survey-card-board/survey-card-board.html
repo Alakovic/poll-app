@@ -1,4 +1,4 @@
-<div class="card card--board">
+<div class="card card--board" [routerLink]="['/survey', survey.id]">
   <div class="card__category card__category--board">{{ survey.category }}</div>
   <div class="card__title card__title--board">{{ survey.title }}</div>
   <div class="card__expiration card__expiration--board">

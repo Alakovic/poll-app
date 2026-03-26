@@ -97,11 +97,13 @@ export class SurveyForm {
     c?.markAsUntouched();
   }
 
-  onSubmit() {
+ async onSubmit() {
     if (this.surveyForm.valid) {
       let survey = new SurveyModel(this.surveyForm.value);
-      this.surveyService.addSurvey(survey);
-      this.router.navigate(['']);
+     let id = await this.surveyService.addSurvey(survey);
+     if(id){
+      this.router.navigate(['/survey', id]);
+      }
     } else {
       this.surveyForm.markAllAsTouched();
     }

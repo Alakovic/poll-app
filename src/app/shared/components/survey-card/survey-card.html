@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" [routerLink]="['/survey', survey.id]">
     <div class="card__category">{{ survey.category }}</div>
     <div class="card__title">{{ survey.title }}</div>
     <div class="card__expiration">Ends in {{surveyService.getDaysLeft(survey.endDate)}} days</div>

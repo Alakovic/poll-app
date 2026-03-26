@@ -27,7 +27,6 @@ export class SurveyService {
   selectedCategory = signal<SurveyCategory | null>(null);
   selectedStatus = signal<'active' | 'past'>('active');
 
-
   categories: SurveyCategory[] = [
     'Team activities',
     'Health & Wellness',
@@ -119,8 +118,8 @@ export class SurveyService {
   }
 
   endingSoonSurveys = computed(() => {
-   return this.surveyList().filter((s) => {
-      if(!s.endDate) return false;
+    return this.surveyList().filter((s) => {
+      if (!s.endDate) return false;
       let daysLeft = this.getDaysLeft(s.endDate);
       return daysLeft <= 5 && daysLeft >= 0;
     });
@@ -138,13 +137,12 @@ export class SurveyService {
     });
   });
 
-  getDaysLeft(endDate: Date | string | undefined): number {
+  getDaysLeft(endDate: any): number {
     if (!endDate) return 0;
-
-    let end = typeof endDate === 'string' ? new Date(endDate) : endDate;
+    let end = new Date(endDate);
     let today = new Date();
-    let timeDiff = end.getTime() - today.getTime();
-    return Math.ceil(timeDiff / (1000 * 3600 * 24));
+    let diff = end.getTime() - today.getTime();
+    return Math.ceil(diff / (1000 * 60 * 60 * 24));
   }
 
   getLetter(index: number): string {
@@ -177,6 +175,8 @@ export class SurveyService {
     for (let question of survey.questions) {
       await this.addQuestion(surveyId, new QuestionModel(question));
     }
+
+    return surveyId;
   }
 
   async addQuestion(surveyId: number, question: QuestionModel) {
