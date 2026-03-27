@@ -13,6 +13,13 @@ export interface Question {
   id: number;
   survey_id: number;
   title: string;
-  answers: string[];
+  answers: Answer[];
   allow_multiple: boolean;
+}
+
+export interface Answer {
+  id: number;
+  text: string;
+  votesCount: number;
+  question_id: number;
 }

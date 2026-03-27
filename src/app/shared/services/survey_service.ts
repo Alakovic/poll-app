@@ -70,7 +70,7 @@ export class SurveyService {
         (payload) => {
           let newQuestion = new QuestionModel(payload.new);
           this.surveyDetail.update((survey) => {
-            if (survey.id === payload.new['survey_id']) {
+            if (survey.id === payload.new['surveyId']) {
               return {
                 ...survey,
                 questions: [...survey.questions, newQuestion],
@@ -90,7 +90,7 @@ export class SurveyService {
         'postgres_changes',
         { event: 'INSERT', schema: 'public', table: 'answers' },
         (payload) => {
-          let questionId = payload.new['question_id'];
+          let questionId = payload.new['questionId'];
           let answerText = payload.new['text'];
           this.surveyDetail.update((survey) => {
             return {
@@ -160,6 +160,28 @@ export class SurveyService {
     }
   }
 
+  async getSurveyWithDetails(id: number) {
+    const { data, error } = await this.supabase
+      .from('surveys')
+      .select(
+        `
+      *,
+      questions (
+        *,
+        answers (*)
+      )
+    `,
+      )
+      .eq('id', id)
+      .single();
+
+    if (error) {
+      console.error(error);
+      return;
+    }
+    this.surveyDetail.set(data);
+  }
+
   async addSurvey(survey: SurveyModel) {
     let survey_data = survey.getCleanAddJson();
     const { data, error } = await this.supabase
@@ -192,7 +214,7 @@ export class SurveyService {
     }
     let questionId = data.id;
     for (let answer of question.answers) {
-      await this.addAnswer(questionId, answer);
+      await this.addAnswer(questionId, answer?.text ?? answer);
     }
   }
 

@@ -1,4 +1,115 @@
+@use '../abstracts/variables' as v;
+
 .details {
   display: flex;
-  align-items: center;
+  gap: 20px;
+
+  &__survey {
+    flex: 7;
+  }
+  &__results {
+    flex: 3;
+    position: sticky;
+    top: 120px;
+  }
+  &__form {
+    width: 100%;
+    background: v.$survey-details-bg;
+    padding: 30px;
+    border-radius: 12px 100px 12px 12px;
+  }
+
+  &__published {
+    background-color: v.$button-primary;
+    border-radius: 0 15px 0 0;
+    width: fit-content;
+    padding: 5px 15px 5px 5px;
+    font-weight: bold;
+  }
+
+  &__overline {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 10px;
+  }
+
+  &__title {
+    padding-block: 15px;
+    font-size: 50px;
+    font-weight: bold;
+    color: v.$text-orange-darker;
+    line-height: 0.85;
+  }
+
+  &__questions {
+    padding-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 80px;
+  }
+
+  &__question-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: v.$text-dark;
+  }
+
+  &__multipleAnswers {
+    font-size: 14px;
+    color: v.$text-dark;
+    font-style: italic;
+    padding-bottom: 10px;
+  }
+
+  &__answers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__answer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    color: v.$text-dark;
+    padding-left: 15px;
+    &:hover {
+      background-color: v.$answer-focus;
+      cursor: pointer;
+    }
+  }
+
+  &__letter {
+    font-weight: bold;
+  }
+
+   &__checkbox {
+    display: none;
+    &:checked + .details__custom-checkbox {
+      background-color: v.$button-filter_active;
+      border-color: v.$button-filter_active;
+    }
+    &:checked + .details__custom-checkbox::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      bottom: 2px;
+      width: 5px;
+      height: 12px;
+      border: solid black;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  &__custom-checkbox {
+    width: 15px;
+    height: 15px;
+    border: 1px solid v.$text-dark;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+  }
 }

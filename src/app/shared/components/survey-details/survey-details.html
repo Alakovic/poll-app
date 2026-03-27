@@ -1,9 +1,50 @@
 <section class="theme theme--light theme--survey-details">
-    <div class="container">
-      <div class="details">
-        <h2>There is more work to be done</h2>
+  <div class="container">
+    <div class="details">
+      <div class="details__survey">
+        <div class="details__form">
+          <div class="details__published">
+            <span>Published</span>
+          </div>
+          <div class="details__overline">
+            <p class="details__endsOn">Ends on {{ detail().endDate | date: 'dd.MM.yyyy' }}</p>
+            <p class="details__category">Category: {{ detail().category }}</p>
+          </div>
+          <h1 class="details__title">{{ detail().title }}</h1>
+          <p class="details__description">{{ detail().description }}</p>
+          <div class="details__questions">
+            @for (q of detail().questions; track $index; let i = $index) {
+              <div class="details__question">
+                <p class="details__question-title">
+                  {{ surveyService.getNumber(i) }}. {{ q.title }}
+                </p>
+                @if (q.allow_multiple) {
+                  <p class="details__multipleAnswers">More than one answers are possible.</p>
+                }
+                <div class="details__answers">
+                  @for (a of q.answers; track $index; let j = $index) {
+                    <label class="details__answer">
+                      <input
+                        class="details__checkbox"
+                        [type]="q.allow_multiple ? 'checkbox' : 'radio'"
+                        [name]="'question-' + q.id"
+                        [value]="a.text"
+                        (change)="onAnswerChange(q.id, a.text, $event)"
+                      />
+                      <span class="details__custom-checkbox"></span>
+
+                      <span class="details__letter">{{ surveyService.getLetter(j) }}.</span>
+                      {{ a.text }}
+                    </label>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+          <button class="btn btn--inactive">Complete Survey</button>
+        </div>
       </div>
+      <div class="details__results"></div>
     </div>
+  </div>
 </section>
-
-

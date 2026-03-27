@@ -1,10 +1,10 @@
-import { Question } from '../interfaces/survey_interface';
+import { Answer, Question } from '../interfaces/survey_interface';
 
 export class QuestionModel implements Question {
   id: number;
   survey_id: number;
   title: string;
-  answers: string[];
+  answers:  Answer[];
   allow_multiple: boolean;
 
   constructor(data: Partial<Question> = {}) {
