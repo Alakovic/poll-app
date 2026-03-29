@@ -19,6 +19,7 @@ export class SurveyForm {
   categories = this.surveyService.categories;
   open: boolean = false;
   categorySelected: boolean = false;
+  isPublished: boolean = false;
 
   ngOnInit() {
     this.addQuestion();
@@ -97,12 +98,18 @@ export class SurveyForm {
     c?.markAsUntouched();
   }
 
- async onSubmit() {
+  async onSubmit() {
     if (this.surveyForm.valid) {
+      this.isPublished = true;
       let survey = new SurveyModel(this.surveyForm.value);
-     let id = await this.surveyService.addSurvey(survey);
-     if(id){
-      this.router.navigate(['/survey', id]);
+      let id = await this.surveyService.addSurvey(survey);
+      if (id) {
+        setTimeout(() => {
+          this.isPublished = false;
+        }, 1000);
+        setTimeout(() => {
+          this.router.navigate(['/survey', id]);
+        }, 2000);
       }
     } else {
       this.surveyForm.markAllAsTouched();

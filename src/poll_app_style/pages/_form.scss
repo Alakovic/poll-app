@@ -279,3 +279,31 @@
     }
   }
 }
+
+.toast {
+  position: fixed;
+  bottom: 150px;
+  right:150px;
+  background: v.$popup-bg;
+  color: v.$text-dark;
+  padding: 16px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  z-index: 999;
+  transform: translateX(120%);
+  animation: slideIn 0.4s ease forwards;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 0 40px 0 0;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-20%);
+    opacity: 1;
+  }
+}
