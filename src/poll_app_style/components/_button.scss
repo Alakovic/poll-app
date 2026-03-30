@@ -27,6 +27,9 @@
 
   &__icon {
     fill: v.$text-white;
+    &.open {
+      transform: rotate(180deg);
+    }
   }
 
   &--primary {
@@ -60,8 +63,8 @@
 
   &--inactive {
     background-color: v.$button-primary_inactive;
-    &:hover{
-       background-color: v.$button-filter_hover
+    &:hover {
+      background-color: v.$button-filter_hover;
     }
   }
 
@@ -75,6 +78,14 @@
 
   &--dropdown:hover {
     background-color: v.$button-tertial;
+    > .btn__icon {
+      fill: v.$text-orange;
+    }
+  }
+
+  &--dropdown.open {
+    background-color: v.$button-tertial;
+
     > .btn__icon {
       fill: v.$text-orange;
     }

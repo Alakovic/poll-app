@@ -38,8 +38,11 @@ export class QuestionForm {
   }
 
   removeAnswer(answerIndex: number) {
-    if (this.answersArray().length > this.minAnswers) {
-      this.answersArray().removeAt(answerIndex);
+    let array = this.answersArray();
+    if (array.length > this.minAnswers) {
+      array.removeAt(answerIndex);
+    }else {
+      array.at(answerIndex).reset();
     }
   }
 

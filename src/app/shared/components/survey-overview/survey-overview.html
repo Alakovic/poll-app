@@ -1,14 +1,29 @@
 <section class="overview">
   <div class="overview__filters">
     <div class="overview__filterByStatus">
-      <button class="btn btn--filter" [class.btn--active]="surveyService.selectedStatus() === 'active'" [class.btn--inactive]="surveyService.selectedStatus() !== 'active'" (click)="surveyService.selectedStatus.set('active')">Active surveys</button>
-      <button class="btn btn--filter" [class.btn--active]="surveyService.selectedStatus() === 'past'" [class.btn--inactive]="surveyService.selectedStatus() !== 'past'" (click)="surveyService.selectedStatus.set('past')">Past surveys</button>
+      <button
+        class="btn btn--filter"
+        [class.btn--active]="surveyService.selectedStatus() === 'active'"
+        [class.btn--inactive]="surveyService.selectedStatus() !== 'active'"
+        (click)="surveyService.selectedStatus.set('active')"
+      >
+        Active surveys
+      </button>
+      <button
+        class="btn btn--filter"
+        [class.btn--active]="surveyService.selectedStatus() === 'past'"
+        [class.btn--inactive]="surveyService.selectedStatus() !== 'past'"
+        (click)="surveyService.selectedStatus.set('past')"
+      >
+        Past surveys
+      </button>
     </div>
     <div class="overview__filterByCat">
-      <button class="btn btn--dropdown" (click)="open = !open">
+      <button class="btn btn--dropdown" (click)="open = !open" [class.open]="open">
         <p>Sort by categories</p>
         <svg
           class="btn__icon"
+          [class.open]="open"
           width="15"
           height="8"
           viewBox="0 0 15 8"

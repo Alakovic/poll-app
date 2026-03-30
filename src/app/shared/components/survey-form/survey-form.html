@@ -16,8 +16,8 @@
               <input type="text" id="survey-name" name="survey-name" formControlName="title" />
               <div class="survey-form__delete" (click)="clearField('title')"></div>
             </div>
-            @if(getErrorMessage('title')) {
-            <div class="survey-form__error">{{ getErrorMessage('title') }}</div>
+            @if (getErrorMessage('title')) {
+              <div class="survey-form__error">{{ getErrorMessage('title') }}</div>
             }
           </div>
           <div class="survey-form__field survey-form__field--date">
@@ -26,15 +26,21 @@
               <input type="text" id="survey-date" name="survey-date" formControlName="endDate" />
               <div class="survey-form__delete" (click)="clearField('endDate')"></div>
             </div>
-             @if(getErrorMessage('endDate')) {
-            <div class="survey-form__error">{{ getErrorMessage('endDate') }}</div>
+            @if (getErrorMessage('endDate')) {
+              <div class="survey-form__error">{{ getErrorMessage('endDate') }}</div>
             }
           </div>
           <div class="survey-form__field survey-form__field--category">
-            <button type="button" class="btn btn--dropdown" (click)="open = !open">
-              <p> Choose category</p>
+            <button
+              type="button"
+              class="btn btn--dropdown"
+              (click)="open = !open"
+              [class.open]="open"
+            >
+              <p>Choose category</p>
               <svg
                 class="btn__icon"
+                [class.open]="open"
                 width="15"
                 height="8"
                 viewBox="0 0 15 8"
@@ -46,7 +52,9 @@
                 />
               </svg>
             </button>
-            <span class="survey-form__category"> {{ categorySelected ? surveyForm.value.category : '' }} </span>
+            <span class="survey-form__category">
+              {{ categorySelected ? surveyForm.value.category : '' }}
+            </span>
             @if (open) {
               <ul class="survey-form__dropdown">
                 @for (cat of categories; track $index) {
@@ -56,8 +64,10 @@
                 }
               </ul>
             }
-             @if(getErrorMessage('category')) {
-            <div class="survey-form__error survey-form__error--category">{{ getErrorMessage('category') }}</div>
+            @if (getErrorMessage('category')) {
+              <div class="survey-form__error survey-form__error--category">
+                {{ getErrorMessage('category') }}
+              </div>
             }
           </div>
           <div class="survey-form__field survey-form__field--description">

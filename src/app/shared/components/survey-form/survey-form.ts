@@ -76,8 +76,16 @@ export class SurveyForm {
   }
 
   removeQuestion(index: number) {
-    if (this.questionsArray().length > 1) {
-      this.questionsArray().removeAt(index);
+    let questions = this.questionsArray();
+    if (questions.length > 1) {
+      questions.removeAt(index);
+    } else {
+     let q = questions.at(index) as FormGroup;
+     q.reset();
+     q.setControl('answers', new FormArray([
+      new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+      new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+     ]));
     }
   }
 
