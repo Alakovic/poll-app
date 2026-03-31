@@ -25,6 +25,18 @@
     }
   }
 
+  &--mobile {
+    display: none;
+    background-color: v.$button-brown;
+    border: none;
+    font-size: 18px;
+    color: v.$text-white;
+    &:hover {
+      cursor: pointer;
+      filter: brightness(1.2);
+    }
+  }
+
   &__icon {
     fill: v.$text-white;
     &.open {
@@ -95,8 +107,8 @@
     background-color: v.$button-brown;
     font-size: 20px;
     color: v.$text-white;
-    align-self: center;
-    justify-self: self-end;
+    align-self: center !important;
+
     &:hover {
       cursor: pointer;
       filter: brightness(1.2);
@@ -188,7 +200,13 @@ $btn-icons: (
   .btn {
     order: 4;
     align-self: flex-start;
-    &--new {
+    &--close {
+      display: none;
+    }
+    &--mobile {
+      display: flex;
+    }
+    &--new, &--publish {
       &::after {
         width: 20px;
         height: 20px;
@@ -203,8 +221,20 @@ $btn-icons: (
         margin-left: 10px;
       }
     }
-    &--primary{
-      background-color: v.$button-primary-hover;
+    &--primary, &--publish {
+      background-color: v.$button-primary_hover;
     }
+  }
+}
+
+@media (max-width: 800px) {
+  .btn {
+    &--add-question, &--publish {
+      justify-self: center;
+    }
+     &--publish {
+      margin-top:60px;
+    }
+
   }
 }

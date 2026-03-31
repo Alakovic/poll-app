@@ -4,6 +4,18 @@
   padding: 0 32px;    
 }
 
+.container-form {
+  max-width: 1440px;  
+  margin: 0 auto;
+  padding: 0 32px;    
+}
+
+@media (max-width: 1200px) {
+  .container-form {
+    padding: 0;
+  }
+}
+
 @media (max-width: 440px) {
   .container {
     padding: 0 10px;

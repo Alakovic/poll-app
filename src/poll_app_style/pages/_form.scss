@@ -6,6 +6,12 @@
   padding: 30px 80px;
   border-radius: 12px 100px 12px 12px;
 
+  &__head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
   &__header {
     display: flex;
     flex-direction: row;
@@ -16,7 +22,6 @@
   &__draft {
     background-color: v.$button-primary;
     border-radius: 0 15px 0 0;
-    width: fit-content;
     padding: 5px 15px 5px 5px;
     font-weight: bold;
   }
@@ -29,7 +34,7 @@
 
   &__category {
     color: v.$text-orange;
-    padding-left: 40px;
+    padding-left: 10px;
   }
 
   &__form {
@@ -41,7 +46,6 @@
   &__fieldset {
     border: none;
     width: 100%;
-
     &--hori {
       display: grid;
       grid-template-columns: 220px 220px 1fr;
@@ -69,6 +73,14 @@
     &--category {
       grid-area: category;
       position: relative;
+      display: flex;
+      align-items: flex-start;
+      > button {
+        order: 1;
+      }
+      > .survey-form__category {
+        order: 2;
+      }
     }
     &--description {
       grid-area: description;
@@ -92,7 +104,6 @@
         border: none;
         background-color: v.$input-focus;
       }
-
       &:hover {
         cursor: pointer;
       }
@@ -100,12 +111,10 @@
         width: 100%;
       }
     }
-
     > textarea {
       resize: none;
       height: 100%;
     }
-
     &--question {
       justify-content: space-between;
       padding-bottom: 5px;
@@ -122,12 +131,10 @@
     transition: 0.3s;
     margin-top: 5px;
     flex: 0 0 30px;
-
     &:hover {
       background-image: url('/assets/img/delete_hover.svg');
       cursor: pointer;
     }
-
     &--question {
       margin-top: 0;
     }
@@ -160,7 +167,6 @@
       border: none;
       background-color: v.$input-focus;
     }
-
     &:hover {
       cursor: pointer;
     }
@@ -252,12 +258,10 @@
     width: fit-content;
     z-index: 10;
     top: 30px;
-
     > li {
       list-style: none;
       padding: 5px 10px;
       border-radius: 8px;
-
       &:hover {
         background-color: v.$highlight_card-bg-hover;
         cursor: pointer;
@@ -283,7 +287,7 @@
 .toast {
   position: fixed;
   bottom: 150px;
-  right:150px;
+  right: 150px;
   background: v.$popup-bg;
   color: v.$text-dark;
   padding: 16px 24px;
@@ -306,4 +310,88 @@
     transform: translateX(-20%);
     opacity: 1;
   }
+}
+
+@media (max-width: 1200px) {
+  .survey-form {
+    &__fieldset {
+      &--hori {
+        gap: 20px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+          'name name'
+          'date category'
+          'description description';
+      }
+    }
+  }
+}
+
+@media (max-width: 920px) {
+  .survey-form {
+    padding: 30px 40px;
+    &__questions {
+      gap: 20px 40px;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .survey-form {
+    &__fieldset {
+      &--hori {
+        gap: 20px;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          'name '
+          'date'
+          'category'
+          'description';
+      }
+    }
+    &__questions {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .survey-form {
+    padding: 30px 15px;
+    &__title {
+      font-size: 40px;
+    }
+    &__head{
+      padding-right: 40px;
+    }
+    &__form{
+      padding: 15px;
+    }
+    &__wrapper {
+      width: 90%;
+    }
+     &__question {
+      width: 80%;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .survey-form {
+    &__answer-input {
+      width: 60%;
+    }
+  }
+  #survey-name, #survey-date{
+    width: 80%;
+  }
+}
+
+@media (max-width: 370px) {
+  .survey-form {
+  &__title {
+    font-size: 30px;  
+  }
+}
 }
