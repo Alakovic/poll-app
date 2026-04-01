@@ -356,22 +356,31 @@
   }
 }
 
+@media (max-width: 550px) {
+  .toast {
+    bottom: 70px;
+    right: 50px;
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+}
+
 @media (max-width: 520px) {
   .survey-form {
     padding: 30px 15px;
     &__title {
       font-size: 40px;
     }
-    &__head{
+    &__head {
       padding-right: 40px;
     }
-    &__form{
+    &__form {
       padding: 15px;
     }
     &__wrapper {
       width: 90%;
     }
-     &__question {
+    &__question {
       width: 80%;
     }
   }
@@ -383,15 +392,21 @@
       width: 60%;
     }
   }
-  #survey-name, #survey-date{
+  #survey-name,
+  #survey-date {
     width: 80%;
   }
 }
 
 @media (max-width: 370px) {
   .survey-form {
-  &__title {
-    font-size: 30px;  
+    &__title {
+      font-size: 30px;
+    }
   }
-}
+
+  .toast {
+    bottom:110px;
+    right: 0px;
+  }
 }
